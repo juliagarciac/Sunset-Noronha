@@ -1,0 +1,1827 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+:root {
+    --blue: #7fffd4;
+    --dark-blue: #0c4971;
+    --light-gray: #f5f5f5;
+    --transition: all 0.2s linear;
+}
+
+* {
+    font-family: 'Crimson Text', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+*::selection {
+    background: var(--blue);
+    color: #fff;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 2rem 9%;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--dark-blue);
+    color: #fff;
+    padding: 0.8rem 3rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: rgba(255, 165, 0, 0.2);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--light-gray);
+    color: #333;
+    padding-top: 80px;
+    line-height: 1.6;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(26, 26, 46, 0.9) 0%,
+        rgba(76, 201, 240, 0.6) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem 9%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+header .logo img {
+    height: 75px; /* Altura padrão - ajuste conforme necessário */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+header .logo img:hover {
+    transform: scale(1.2);
+    opacity: 0.95;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 1.5);
+    filter: drop-shadow(0 0 5px rgba(76, 201, 240, 0.7));
+}
+
+header .navbar a {
+    font-family: 'Crimson Text', serif;
+    color: #fff;
+    font-size: 1.6rem;
+    margin: 0 1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+header .navbar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+header .icons {
+    display: flex;
+    align-items: center;
+}
+
+header .icons i {
+    font-size: 2.2rem;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+header .icons i:hover {
+    color: var(--blue);
+    transform: scale(1.1);
+}
+
+header .search-bar-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: var(--dark-blue);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+header .search-bar-container.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+header .search-bar-container #search-bar {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    color: #333;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+header .search-bar-container label {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-left: 1.5rem;
+}
+
+header .search-bar-container label:hover {
+    color: var(--blue);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    header .logo img {
+        height: 35px; /* Tamanho menor para mobile */
+    }
+    
+    header .navbar a {
+        font-size: 1.4rem;
+        padding: 0.6rem 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    header .icons i {
+        font-size: 2rem;
+        margin-left: 1.2rem;
+    }
+}
+
+.login-form-container {
+    position: fixed;
+    top: -120%;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.login-form-container.active {
+    top: 0;
+}
+
+.login-form-container form {
+    background: #fff;
+    width: 40rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.login-form-container form h3 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-form-container form .box {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    text-transform: none;
+}
+
+.login-form-container form .box:focus {
+    border-color: var(--blue);
+}
+
+.login-form-container form .btn {
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 1.2rem;
+}
+
+.login-form-container form #remember {
+    margin: 1rem 0;
+}
+
+.login-form-container form label {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.login-form-container form p {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.login-form-container form p a {
+    color: var(--blue);
+}
+
+.login-form-container form p a:hover {
+    text-decoration: underline;
+}
+
+.login-form-container #form-close {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 3.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-form-container #form-close:hover {
+    transform: rotate(90deg);
+    color: var(--blue);
+}
+
+.signup-form-container {
+    position: fixed;
+    top: -120%;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.signup-form-container.active {
+    top: 0;
+}
+
+.signup-form-container form {
+    background: #fff;
+    width: 40rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.signup-form-container form h3 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.signup-form-container form .box {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    text-transform: none;
+}
+
+.signup-form-container form .box:focus {
+    border-color: var(--blue);
+}
+
+.signup-form-container form .btn {
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 1.2rem;
+}
+
+.signup-form-container form p {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.signup-form-container form p a {
+    color: var(--blue);
+}
+
+.signup-form-container form p a:hover {
+    text-decoration: underline;
+}
+
+.signup-form-container #signup-close {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 3.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.signup-form-container #signup-close:hover {
+    transform: rotate(90deg);
+    color: var(--blue);
+}
+
+#menu-bar {
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5rem;
+    font-size: 3rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease; 
+}
+
+#menu-bar:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    position: relative;
+    z-index: 0;
+    margin-top: -1px;
+    text-align: center;
+}
+
+.home .content {
+    z-index: 1;
+    max-width: 80rem;
+    padding: 0 2rem;
+}
+
+.home .content h3 {
+    font-family: 'Crimson Text', serif;
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.home .content p {
+    font-family: 'Meow Script', cursive;
+    font-size: 3.5rem;
+    color: #fff;
+    padding: 2rem 0;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.home .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.home .controls {
+    padding: 0.8rem 2rem;
+    border-radius: 5rem;
+    background: rgba(0, 0, 0, 0.4);
+    position: relative;
+    top: 10rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .controls .vid-btn {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home .controls .vid-btn.active {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.3);
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+    
+    .home .content h3 {
+        font-size: 5rem;
+    }
+    
+    .home .content p {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 991px) {
+    header {
+        padding: 1.8rem 3%;
+    }
+    
+    section {
+        padding: 2rem 3%;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-bar {
+        display: block;
+    }
+    
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--dark-blue);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 1rem 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        flex-direction: column;
+    }
+    
+    header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    header .navbar a {
+        display: block;
+        margin: 1.5rem 0;
+        padding: 1.2rem;
+        background: rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    .home .content h3 {
+        font-size: 8rem;
+    }
+    
+    .home .content p {
+        font-size: 2.8rem;
+    }
+    
+    .home .controls {
+        top: 8rem;
+    }
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+    
+    .home .content h3 {
+        font-size: 3.2rem;
+    }
+    
+    .home .content p {
+        font-size: 2.2rem;
+    }
+    
+    .home .controls {
+        top: 6rem;
+        padding: 0.6rem 1.5rem;
+    }
+    
+    .home .controls .vid-btn {
+        height: 0.8rem;
+        width: 0.8rem;
+        margin: 0 0.3rem;
+    }
+    
+    header .logo {
+        font-size: 2.2rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Estilos para a seção Reservas */
+.reservas .heading {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.reservas .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.reservas .row .image {
+    flex: 1 1 40rem;
+}
+
+.reservas .row .image img {
+    width: 100%;
+    border-radius: .5rem;
+    object-fit: cover;
+    height: auto;
+}
+
+.reservas .row form {
+    flex: 1 1 40rem;
+    padding: 1rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    border-radius: .4rem;
+    background: #fff;
+}
+
+.reservas .row form .inputBox {
+    padding: .5rem 0;
+    position: relative;
+}
+
+.reservas .row form .inputBox h3 {
+    font-size: 2.0rem;
+    padding: 1rem 0;
+    color: #333;
+    font-family: 'Crimson Text', serif;
+}
+
+.reservas .row form .inputBox input,
+.reservas .row form .inputBox select {
+    width: 100%;
+    padding: 1rem;
+    border: .1rem solid rgba(0, 0, 0, .3);
+    font-size: 1.5rem;
+    color: #333;
+    text-transform: none;
+    border-radius: .5rem;
+    background: #fff;
+    appearance: none;
+    cursor: pointer;
+    font-family: 'Crimson Text', serif;
+}
+
+.reservas .row form .inputBox input:focus,
+.reservas .row form .inputBox select:focus {
+    border-color: rgba(0, 0, 0, .7);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.reservas .row form .inputBox select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 2.5rem;
+}
+
+.reservas .row form .inputBox.acomodacao::after {
+    content: '▼';
+    font-size: 1.2rem;
+    color: #333;
+    position: absolute;
+    right: 1rem;
+    top: 60%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.reservas .row form .inputBox select:hover {
+    border-color: rgba(0, 0, 0, .5);
+}
+
+.reservas .row form .btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    background: var(--dark-blue);
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.reservas .row form .btn:hover {
+    background: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Responsividade completa */
+@media (max-width: 1200px) {
+    .reservas .heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .reservas .row {
+        flex-direction: column;
+    }
+    
+    .reservas .row .image {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reservas .heading {
+        font-size: 2.2rem;
+    }
+    
+    .reservas .row form {
+        padding: 1.5rem;
+    }
+    
+    .reservas .row form .inputBox h3 {
+        font-size: 1.3rem;
+    }
+    
+    .reservas .row form .inputBox input,
+    .reservas .row form .inputBox select {
+        font-size: 1.3rem;
+    }
+    
+    .reservas .row form .btn {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .reservas .heading {
+        font-size: 2rem;
+    }
+    
+    .reservas .row form {
+        padding: 1rem;
+    }
+    
+    .reservas .row form .inputBox h3 {
+        font-size: 1.2rem;
+        padding: 0.8rem 0;
+    }
+    
+    .reservas .row form .inputBox input,
+    .reservas .row form .inputBox select {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+    
+    .reservas .row form .btn {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .reservas .heading {
+        font-size: 1.8rem;
+    }
+}
+
+ /*termina*/
+
+ /* Estilos para a seção Pacotes */
+.pacotes {
+    padding: 4rem 9%;
+    background: #f9f9f9;
+    font-family: 'Crimson Text', serif;
+}
+
+.pacotes .heading {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.pacotes .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.pacotes .box-container .box {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.pacotes .box-container .box:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.pacotes .box-container .box img {
+    width: 100%;
+    height: 25rem;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.pacotes .box-container .box:hover img {
+    transform: scale(1.05);
+}
+
+.pacotes .box-container .box .content {
+    padding: 2rem;
+}
+
+.pacotes .box-container .box .content h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-transform: none;
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+}
+
+.pacotes .box-container .box .content h3 i {
+    color: var(--dark-blue);
+    margin-right: 0.5rem;
+}
+
+.pacotes .box-container .box .content p {
+    font-size: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+    padding: 1rem 0;
+    text-transform: none;
+    font-family: 'Crimson Text', serif;
+    font-weight: 400;
+}
+
+.pacotes .box-container .box .content .stars {
+    margin: 1rem 0;
+}
+
+.pacotes .box-container .box .content .stars i {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+    margin-right: 0.3rem;
+}
+
+.pacotes .box-container .box .content .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    background: var(--dark-blue);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    text-transform: none;
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.pacotes .box-container .box .content .btn:hover {
+    background: #0056b3;
+}
+
+/* Estilos do Modal do Carrossel */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    font-family: 'Crimson Text', serif;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrossel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.slide img {
+    max-height: 90vh;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.fechar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    font-family: 'Crimson Text', serif;
+}
+
+.anterior, .proximo {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 3px 3px 0;
+    z-index: 1001;
+    font-family: 'Crimson Text', serif;
+}
+
+.proximo {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.anterior:hover, .proximo:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .pacotes .heading {
+        font-size: 3rem;
+    }
+    
+    .pacotes .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .pacotes {
+        padding: 3rem 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .pacotes .heading {
+        font-size: 2.5rem;
+    }
+    
+    .pacotes .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+    
+    .pacotes .box-container .box img {
+        height: 20rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .pacotes .heading {
+        font-size: 2.2rem;
+    }
+    
+    .pacotes .box-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .pacotes .box-container .box .content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .pacotes .box-container .box .content p {
+        font-size: 1.4rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        height: 80vh;
+    }
+}
+
+@media (max-width: 400px) {
+    .pacotes .heading {
+        font-size: 2rem;
+    }
+    
+    .pacotes .box-container .box img {
+        height: 18rem;
+    }
+    
+    .pacotes .box-container .box .content {
+        padding: 1.5rem;
+    }
+}
+
+/* Estilos para a seção de Servicos */
+.servicos {
+    padding: 5rem 9%;
+    background: #fff;
+}
+
+.servicos .heading {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.servicos .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.servicos .box-container .box {
+    flex: 1 1 30rem;
+    border-radius: .5rem;
+    padding: 2rem;
+    text-align: center;
+    background: #f9f9f9;
+    transition: transform 0.3s ease;
+    max-width: 30rem;
+    margin: 1rem;
+}
+
+.servicos .box-container .box i {
+    font-size: 5rem;
+    color: #1a365d; /* Azul escuro */
+    margin-bottom: 1.5rem;
+}
+
+.servicos .box-container .box h3 {
+    font-size: 2.2rem;
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+    text-transform: none;
+}
+
+.servicos .box-container .box p {
+    font-size: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+    text-transform: none;
+    text-align: center;
+}
+
+.servicos .box-container .box:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .servicos {
+        padding: 5rem 5%;
+    }
+}
+
+@media (max-width: 991px) {
+    .servicos .box-container .box {
+        flex: 1 1 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicos .heading {
+        font-size: 3.5rem;
+    }
+    
+    .servicos .box-container .box {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    .servicos .heading {
+        font-size: 3rem;
+    }
+    
+    .servicos .box-container .box h3 {
+        font-size: 2rem;
+    }
+    
+    .servicos .box-container .box p {
+        font-size: 1.4rem;
+    }
+}
+
+/* Estilos para a seção Sobre Nos */
+.sobre_nos {
+    padding: 4rem 9%;
+    background: #f9f9f9;
+    font-family: 'Crimson Text', serif;
+}
+
+.left-column,
+.right-column {
+    width: 50%;
+}
+
+.horizontal-line {
+    width: 50px;
+    height: 4px;
+    background-color: var(--dark-blue);
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    color: var(--dark-blue);
+}
+
+.right-column {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 2rem;
+}
+
+.right-column p {
+    margin-bottom: 20px;
+    font-size: 2.0rem;
+    text-transform: none;
+}
+
+/* Subtítulo */
+.subtitle {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    text-transform: none;
+}
+
+.sobre_nos .heading {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.sobre_nos h1{
+    text-transform: none;
+}
+
+.sobre_nos .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.sobre_nos .box-container .box {
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    border: 1rem solid #fff;
+    border-radius: .5rem;
+    height: 35rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sobre_nos .box-container .box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.sobre_nos .box-container .box:hover img {
+    transform: scale(1.05);
+}
+
+.sobre_nos .box-container .box .content {
+    position: absolute;
+    top: -100%; 
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, .7);
+    padding: 2rem;
+    padding-top: 5rem;
+    transition: top 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre_nos .box-container .box:hover .content {
+    top: 0;
+}
+
+.sobre_nos .box-container .box .content h3 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+}
+
+.sobre_nos .box-container .box .content p {
+    font-size: 1.5rem;
+    color: #eee;
+    padding: 0.5rem 0;
+    font-family: 'Crimson Text', serif;
+}
+
+.sobre_nos .box-container .box .content .btn {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    background: var(--blue);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    font-family: 'Crimson Text', serif;
+}
+
+.sobre_nos .box-container .box .content .btn:hover {
+    background: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .sobre_nos .heading {
+        font-size: 3rem;
+    }
+    
+    .sobre_nos .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .sobre_nos {
+        padding: 3rem 5%;
+    }
+    
+    .sobre_nos .box-container .box {
+        height: 30rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sobre_nos .heading {
+        font-size: 2.5rem;
+    }
+    
+    .sobre_nos .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+    
+    .sobre_nos .box-container .box {
+        height: 28rem;
+    }
+    
+    .sobre_nos .box-container .box .content h3 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .sobre_nos .heading {
+        font-size: 2.2rem;
+    }
+    
+    .sobre_nos .box-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sobre_nos .box-container .box {
+        height: 25rem;
+    }
+    
+    .sobre_nos .box-container .box .content h3 {
+        font-size: 2rem;
+    }
+    
+    .sobre_nos .box-container .box .content p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .sobre_nos .heading {
+        font-size: 2rem;
+    }
+    
+    .sobre_nos .box-container .box {
+        height: 22rem;
+    }
+    
+    .sobre_nos .box-container .box .content {
+        padding: 1.5rem;
+        padding-top: 4rem;
+    }
+}
+
+
+/* Estilos para a seção Avaliações */
+.avaliacoes {
+    padding: 4rem 9%;
+    background: #f9f9f9;
+    font-family: 'Crimson Text', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.avaliacoes .heading {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.avaliacoes-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    overflow: hidden;
+}
+
+.avaliacoes-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.avaliacao-box {
+    flex: 0 0 calc(100% - 2rem);
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    background: #fff;
+    margin: 0 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avaliacao-box:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
+}
+
+.avaliacao-box img {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 0.5rem solid var(--dark-blue);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.avaliacao-box h3 {
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-family: 'Crimson Text', serif;
+}
+
+.avaliacao-box p {
+    color: #666;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    padding: 1rem 0;
+    font-family: 'Crimson Text', serif;
+    text-transform: none;
+}
+
+.avaliacao-box .stars {
+    margin-top: 1.5rem;
+}
+
+.avaliacao-box .stars i {
+    color: var(--dark-blue);
+    font-size: 2rem;
+    margin: 0 0.3rem;
+}
+
+/* Controles de navegação */
+.avaliacoes-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.avaliacoes-controls button {
+    background: var(--dark-blue);
+    color: white;
+    border: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.avaliacoes-controls button:hover {
+    background: var(--dark-blue);
+}
+
+.pagination-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination-dots span {
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: #999;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.pagination-dots span.active {
+    background: var(--dark-blue);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .avaliacao-box {
+        flex: 0 0 calc(50% - 2rem);
+    }
+}
+
+@media (min-width: 992px) {
+    .avaliacao-box {
+        flex: 0 0 calc(33.333% - 2rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    .avaliacoes .heading {
+        font-size: 3rem;
+    }
+    
+    .avaliacao-box {
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .avaliacoes {
+        padding: 3rem 5%;
+    }
+    
+    .avaliacao-box img {
+        height: 13rem;
+        width: 13rem;
+    }
+    
+    .avaliacao-box h3 {
+        font-size: 2rem;
+    }
+    
+    .avaliacao-box p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .avaliacoes .heading {
+        font-size: 2.5rem;
+    }
+    
+    .avaliacao-box {
+        margin: 0 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .avaliacoes .heading {
+        font-size: 2.2rem;
+    }
+    
+    .avaliacao-box {
+        padding: 2rem;
+    }
+    
+    .avaliacao-box img {
+        height: 11rem;
+        width: 11rem;
+    }
+    
+    .avaliacao-box h3 {
+        font-size: 1.8rem;
+    }
+    
+    .avaliacao-box p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .avaliacoes .heading {
+        font-size: 2rem;
+    }
+    
+    .avaliacao-box {
+        padding: 1.5rem;
+    }
+    
+    .avaliacao-box img {
+        height: 10rem;
+        width: 10rem;
+    }
+}
+
+
+.contact .heading {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.contact .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact .row .image {
+    flex: 1 1 35rem;
+    max-width: 100%;
+}
+
+.contact .row .image img {
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.contact .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem; /* Espaçamento maior entre imagem e formulário */
+    max-width: 1200px; /* Largura máxima aumentada */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contact .row form {
+    flex: 1 1 50rem; /* Formulário ocupa mais espaço */
+    padding: 2rem; /* Padding interno aumentado */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    border-radius: .5rem;
+    background: #fff;
+}
+
+h3 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    color: var(--dark-blue);
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-transform: none;
+}
+
+iframe {
+    display: block;          /* Remove espaços indesejados abaixo do iframe */
+    margin: 0 auto;          /* Centraliza horizontalmente */
+    max-width: 100%;         /* Garante responsividade */
+}
+
+.contact .row form .inputBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem; /* Espaçamento entre inputs aumentado */
+    margin-bottom: 2rem; /* Margem inferior adicionada */
+}
+
+.contact .row form .inputBox input {
+    flex: 1 1 calc(50% - 1rem); /* Ajuste para o novo gap */
+    margin: 1.5rem 0; /* Margem vertical aumentada */
+    padding: 1.5rem; /* Padding interno aumentado */
+    font-size: 1.7rem;
+    color: #333;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    width: 100%; /* Garante que inputs não fiquem estreitos */
+}
+
+.contact .row form textarea {
+    width: 100%;
+    height: 20rem; /* Altura aumentada */
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    font-size: 1.7rem;
+    color: #333;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    resize: none;
+}
+
+.contact .row form .btn {
+    width: 100%;
+    padding: 1.5rem 3rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    background: var(--dark-blue);
+    color: white;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+}
+
+.contact .row form .btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .contact .row form .inputBox input {
+        flex: 1 1 100%;
+    }
+}
+
+ /* media queries*/
+ @media (max-width: 1200px){
+    /* Altera o tamanho da fonte do html para 55% quando a largura da tela for menor ou igual a 1200px.*/
+     html{
+         font-size: 55%;
+     }
+ }
+ 
+ @media (max-width: 991px){
+    /* Altera o preenchimento do cabeçalho e das seções para 2rem quando a largura da tela for menor ou igual a 991px. */
+     header{
+         padding: 2rem;
+     }
+     section{
+         padding:2rem;
+     }
+ }
+ 
+ @media (max-width: 768px){
+    /* Exibe o botão de menu-bar com display: initial; quando a tela for menor ou igual a 768px.*/
+     menu-bar{
+         display:initial; 
+     }
+
+    /*Posiciona a barra de navegação do cabeçalho abaixo do cabeçalho e ajusta o comportamento dos links na barra de navegação para blocos empilhados. */
+ 
+     header .navbar{
+         position: absolute;
+         top: 100%; right:0; left:0;
+         background: #333;
+         border-top: .1rem solid rgba(255, 255, 255,.2);
+         padding: 1rem 2rem;
+         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+     }
+ 
+     header .navbar.active{
+         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+     }
+ 
+     header .navbar a{
+         display:block;
+         border-radius: 5rem;
+         padding: 1.5rem;
+         margin: 1.5rem 0;
+         background: #222;   
+     }
+ }
+ 
+ @media (max-width: 450px){
+    /* Altera o tamanho da fonte do html para 50% quando a largura da tela for menor ou igual a 450px.*/
+     html{
+         font-size: 50%;
+     }
+ }
+
+ a.btn {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado padrão de links */
+    transition: all 0.3s ease;
+}
+
+a.btn:hover {
+    color: #fff;
+    background: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rodape {
+    background-color: var(--dark-blue);
+    color: white;
+    width: 100%;
+    font-size: 14px;
+    font-family: helvetica;
+    padding: 40px 10px; /* Adicionando padding ao rodapé */
+}
+
+.rodape img {
+    display: block; /* Faz a imagem ser um bloco */
+    height: auto; /* Ajusta a altura da imagem automaticamente */
+    max-width: 80%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    margin: 0 auto 15px; /* Centraliza a imagem e ajusta a margem inferior */
+}
+
+.rodape a {
+    text-decoration: none;
+    color: white;
+}
+
+.rodape p {
+    margin-bottom: 10px; /* Aumentando o espaçamento entre os parágrafos */
+}
+
+.slogan {
+    font-size: 1.2em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.rodape-direitos {
+    text-align: center; /* Centraliza o texto */
+    margin-top: 20px; /* Adiciona um espaço acima do copyright */
+    font-size: 18px; /* Ajuste o tamanho da fonte se necessário */
+}
+
+.rodape-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribui igualmente os itens */
+    width: 100%;
+    margin: auto;
+    padding: 20px 0; /* Ajuste o padding conforme necessário */
+}
+
+.rodape-div > div {
+    flex: 1; /* Faz com que cada coluna ocupe espaço igual */
+    padding: 10px;
+    min-width: 200px; /* Define uma largura mínima para as colunas */
+}
+
+.rodape span {
+    font-size: 20px;
+    color: white;
+}
+
+.social-icons .fa-brands {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #000;
+    background: #fff;
+    margin-right: 10px; /* Ajuste o espaçamento entre os ícones */
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .rodape-div > div {
+        flex: 1 1 100%; /* Cada coluna ocupa 100% da largura em telas menores */
+        margin-bottom: 20px; /* Espaçamento entre as colunas */
+    }
+    .rodape-div {
+        padding: 20px 0; /* Ajuste o padding para telas menores */
+    }
+}
